@@ -1,0 +1,51 @@
+/* Hero Background Animation */
+.hero-animated-bg {
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.hero-animated-bg::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    background:
+        radial-gradient(circle at 30% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 25%),
+        radial-gradient(circle at 70% 70%, rgba(168, 85, 247, 0.1) 0%, transparent 25%),
+        radial-gradient(circle at 30% 70%, rgba(16, 185, 129, 0.1) 0%, transparent 25%);
+    animation: bgFloat 15s infinite alternate ease-in-out;
+    z-index: -1;
+}
+
+@keyframes bgFloat {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(10%, 5%);
+    }
+}
+
+/* Floating Particles */
+.particle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    animation: particleFloat 8s infinite ease-in-out;
+}
+
+@keyframes particleFloat {
+
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate(20px, -15px) rotate(5deg);
+    }
+}

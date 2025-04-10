@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Portfolio Favicon -->
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3132/3132698.png" type="image/png">
+    <title>Rajender | My Projects</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="components\css\styles.css">
+    <link rel="stylesheet" href="components\css\animations.css">
+    <link rel="stylesheet" href="components\css\hero-animations.css">
+    <style>
+        /* Enhanced Animations */
+        .projects-section {
+            perspective: 1000px;
+        }
+        .project-card {
+            opacity: 0;
+            transform: translateY(30px) rotateX(15deg);
+            transition: all 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+            transform-style: preserve-3d;
+        }
+        .project-card.visible {
+            opacity: 1;
+            transform: translateY(0) rotateX(0);
+        }
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        .project-card img {
+            transition: all 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+            transform-origin: center;
+        }
+        .project-card:hover img {
+            transform: scale(1.08);
+        }
+        .project-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .project-link:hover {
+            transform: translateX(8px);
+        }
+        .project-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: currentColor;
+            transition: width 0.3s ease;
+        }
+        .project-link:hover::after {
+            width: 100%;
+        }
+        .filter-btn {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .filter-btn:hover {
+            transform: translateY(-3px) scale(1.08);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .filter-btn.active {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+    
+</head>
+<body class="font-poppins bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+ <!-- Header - Matching Home Page -->
+<header class="sticky top-0 z-50 bg-gradient-to-b from-black/95 to-gray-900/80 backdrop-blur-sm shadow-lg animate-fade-in-down">
+    <div class="container mx-auto px-4">
+        <nav class="flex items-center justify-between py-3">
+            <!-- Premium Animated Logo -->
+            <a href="index.html" class="flex items-center group relative overflow-hidden">
+                <span class="text-2xl mr-2 group-hover:rotate-[20deg] transition-transform duration-700">👨‍💻</span>
+                <span class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-blue-400 transition-all duration-700 relative">
+                    <span class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                        Rajender
+                    </span>
+                    <span class="absolute inset-0 bg-gradient-to-r from-purple-400 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></span>
+                </span>
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left"></span>
+            </a>
+
+            <!-- Premium Desktop Navigation -->
+            <div class="hidden md:flex space-x-4">
+                <a href="index.html" class="nav-item relative px-4 py-2 group">
+                    <span class="relative z-10 text-white group-hover:text-blue-400 transition-colors duration-500">Home</span>
+                    <span class="absolute bottom-0 left-0 h-0.5 bg-blue-400 w-0 group-hover:w-full transition-all duration-700 origin-left"></span>
+                    <span class="absolute inset-0 bg-blue-400/10 rounded-lg scale-95 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-500"></span>
+                </a>
+                <a href="about.html" class="nav-item relative px-4 py-2 group">
+                    <span class="relative z-10 text-white group-hover:text-blue-400 transition-colors duration-500">About</span>
+                    <span class="absolute bottom-0 left-0 h-0.5 bg-blue-400 w-0 group-hover:w-full transition-all duration-700 origin-left"></span>
+                    <span class="absolute inset-0 bg-blue-400/10 rounded-lg scale-95 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-500"></span>
+                </a>
+                <a href="skills.html" class="nav-item relative px-4 py-2 group">
+                    <span class="relative z-10 text-white group-hover:text-blue-400 transition-colors duration-500">Skills</span>
+                    <span class="absolute bottom-0 left-0 h-0.5 bg-blue-400 w-0 group-hover:w-full transition-all duration-700 origin-left"></span>
+                    <span class="absolute inset-0 bg-blue-400/10 rounded-lg scale-95 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-500"></span>
+                </a>
+                <a href="projects.html" class="nav-item relative px-4 py-2 group">
+                    <span class="relative z-10 text-white group-hover:text-blue-400 transition-colors duration-500">Projects</span>
+                    <span class="absolute bottom-0 left-0 h-0.5 bg-blue-400 w-0 group-hover:w-full transition-all duration-700 origin-left"></span>
+                    <span class="absolute inset-0 bg-blue-400/10 rounded-lg scale-95 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-500"></span>
+                </a>
+                <a href="contact.html" class="nav-item relative px-4 py-2 group">
+                    <span class="relative z-10 text-white group-hover:text-blue-400 transition-colors duration-500">Contact</span>
+                    <span class="absolute bottom-0 left-0 h-0.5 bg-blue-400 w-0 group-hover:w-full transition-all duration-700 origin-left"></span>
+                    <span class="absolute inset-0 bg-blue-400/10 rounded-lg scale-95 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-500"></span>
+                </a>
+            </div>
+
+            <!-- Premium Mobile Menu Button -->
+            <button id="mobileBtn" class="md:hidden text-white p-3 rounded-lg hover:bg-gray-800/50 transition-all duration-500 group relative overflow-hidden">
+                <i class="fas fa-bars text-xl group-hover:rotate-180 transition-transform duration-700"></i>
+                <span class="absolute inset-0 bg-blue-400/10 rounded-lg scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu with Animations -->
+        <div id="mobileMenu" class="md:hidden hidden bg-black/90 w-full absolute left-0 px-4 pb-4 transform origin-top transition-all duration-500 scale-y-0">
+            <a href="index.html" class="block text-white py-3 border-b border-gray-800 hover:text-blue-400 hover:pl-4 transition-all duration-300">
+                <i class="fas fa-home mr-3 text-blue-400"></i> Home
+            </a>
+            <a href="about.html" class="block text-white py-3 border-b border-gray-800 hover:text-blue-400 hover:pl-4 transition-all duration-300">
+                <i class="fas fa-user mr-3 text-blue-400"></i> About
+            </a>
+            <a href="skills.html" class="block text-white py-3 border-b border-gray-800 hover:text-blue-400 hover:pl-4 transition-all duration-300">
+                <i class="fas fa-code mr-3 text-blue-400"></i> Skills
+            </a>
+            <a href="projects.html" class="block text-white py-3 border-b border-gray-800 hover:text-blue-400 hover:pl-4 transition-all duration-300">
+                <i class="fas fa-project-diagram mr-3 text-blue-400"></i> Projects
+            </a>
+            <a href="contact.html" class="block text-white py-3 hover:text-blue-400 hover:pl-4 transition-all duration-300">
+                <i class="fas fa-envelope mr-3 text-blue-400"></i> Contact
+            </a>
+        </div>
+    </div>
+</header>
+
+<script>
+    // Mobile menu functionality
+    document.addEventListener('DOMContentLoaded', () => {
+        const btn = document.getElementById('mobileBtn');
+        const menu = document.getElementById('mobileMenu');
+        const icon = btn.querySelector('i');
+        
+        btn.addEventListener('click', () => {
+            const isHidden = menu.classList.contains('hidden');
+            
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('scale-y-0');
+            menu.classList.toggle('scale-y-100');
+            
+            if(isHidden) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    });
+</script>
+
+
+    <main class="py-20">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl font-bold text-center mb-12 dark:text-white animate-fade-in">My Projects</h1>
+            
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="filter-btn px-6 py-2 rounded-full bg-blue-500 text-white" data-filter="all">All</button>
+                <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 dark:bg-gray-700" data-filter="web">Web</button>
+                <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 dark:bg-gray-700" data-filter="mobile">Mobile</button>
+                <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 dark:bg-gray-700" data-filter="design">Design</button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 - Python Quiz App -->
+                <div class="project-card" data-category="web" data-delay="100">
+                    <img src="https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg" 
+                         alt="Python Quiz App" 
+                         class="w-full h-48 object-cover project-img">
+                    <div class="p-6 dark:bg-gray-800">
+                        <h3 class="text-xl font-bold mb-2 dark:text-white">Python Quiz App</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded text-xs dark:bg-blue-900 dark:text-blue-200">Django</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs dark:bg-green-900 dark:text-green-200">Python</span>
+                            <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded text-xs dark:bg-yellow-900 dark:text-yellow-200">HTML</span>
+                            <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded text-xs dark:bg-yellow-900 dark:text-red-200">Css</span>
+                            <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded text-xs dark:bg-purple-900 dark:text-purple-200">JavaScript</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Interactive quiz application with user authentication, score tracking, and admin dashboard.</p>
+                        <a href="#" class="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium project-link">View Project →</a>
+                    </div>
+                </div>
+
+                <!-- Project 2: Sonic Flow -->
+                <div class="project-card" data-category="mobile" data-delay="200">
+                    <img src="https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg" alt="Sonic Flow" class="w-full h-48 object-cover transform hover:scale-105 transition-transform duration-300">
+                    <div class="p-6 dark:bg-gray-800">
+                        <h3 class="text-2xl font-bold text-white mb-2">Sonic Flow</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs dark:bg-green-900 dark:text-green-200">HTML</span>
+                            <span class="px-2 py-1 bg-red-100 text-red-800 rounded text-xs dark:bg-red-900 dark:text-red-200">Css</span>
+                            <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded text-xs dark:bg-purple-900 dark:text-purple-200">JavaScript</span>
+                        </div>
+                        <p class="text-gray-400 mb-4">Music streaming application with personalized recommendations and playlist management.</p>
+                        <a href="https://sonic-groove-flow.lovable.app/" class="text-blue-400 hover:text-blue-300 transform hover:translate-x-2 transition-transform duration-300">View Project →</a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card" data-category="mobile" data-delay="200">
+                    <img src="https://images.pexels.com/photos/3999536/pexels-photo-3999536.jpeg" 
+                         alt="Mobile App" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6 dark:bg-gray-800">
+                        <h3 class="text-xl font-bold mb-2 dark:text-white">Fitness Tracker App</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs dark:bg-green-900 dark:text-green-200">Flutter</span>
+                            <span class="px-2 py-1 bg-red-100 text-red-800 rounded text-xs dark:bg-red-900 dark:text-red-200">Firebase</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Mobile application for tracking workouts and nutrition with progress charts.</p>
+                        <a href="projects.html" class="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium">View Project →</a>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card" data-category="design" data-delay="300">
+                    <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg" 
+                         alt="UI Design" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6 dark:bg-gray-800">
+                        <h3 class="text-xl font-bold mb-2 dark:text-white">Banking App UI</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-pink-100 text-pink-800 rounded text-xs dark:bg-pink-900 dark:text-pink-200">Figma</span>
+                            <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded text-xs dark:bg-yellow-900 dark:text-yellow-200">Illustrator</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Modern banking interface with intuitive navigation and clean aesthetics.</p>
+                        <a href="projects.html" class="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium">View Project →</a>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card" data-category="web">
+                    <img src="https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg" 
+                         alt="Web Project" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6 dark:bg-gray-800">
+                        <h3 class="text-xl font-bold mb-2 dark:text-white">E-commerce Website</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded text-xs dark:bg-blue-900 dark:text-blue-200">React</span>
+                            <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded text-xs dark:bg-purple-900 dark:text-purple-200">Node.js</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">A full-featured online store with cart functionality and payment processing.</p>
+                        <a href="projects.html" class="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium">View Project →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="btn-back-home" onclick="location.href='index.html'">Back to Home</button>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-6 text-center">
+        <div class="container mx-auto px-4">
+            <p class="text-white text-sm mb-4">
+                &copy; <span id="currentYear"></span> Rajender. All rights reserved.
+            </p>
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" 
+                    class="mx-auto px-4 py-2 bg-amber-600 hover:bg-amber-700 rounded-full text-white transition-all transform hover:scale-105">
+                <i class="fas fa-arrow-up mr-2"></i> Back to Top
+            </button>
+        </div>
+    </footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const btn = document.getElementById('mobileBtn');
+        const menu = document.getElementById('mobileMenu');
+        const icon = btn.querySelector('i');
+        
+        btn.addEventListener('click', () => {
+            const isHidden = menu.classList.contains('hidden');
+            
+            // Toggle menu with animation
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('scale-y-0');
+            menu.classList.toggle('scale-y-100');
+            
+            // Animate icon
+            if(isHidden) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    });
+    </script>
+
+         
+    </div>
+    <script>
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach(card => {
+                const delay = card.dataset.delay || 0;
+                setTimeout(() => {
+                    card.classList.add('visible');
+                }, delay);
+            });
+        });
+
+        // Load header and footer components
+        fetch('components/header.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('header-container').innerHTML = html;
+            });
+
+        fetch('components/footer.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('footer-container').innerHTML = html;
+            });
+    </script>
+    <script src="components\js\script.js"></script>
+    <script src = "components\js\animations.js"></script>
+</body>
+</html>
